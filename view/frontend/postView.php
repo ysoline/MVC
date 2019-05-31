@@ -23,7 +23,7 @@
         {
         ?>
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> 
-            <a href="view/frontend/upCommentview.php">Modifier le commentaire </a>
+            <a href="view/frontend/commentView.php?action=edit&amp;id=<?= $comment['id']?>">Modifier le commentaire </a>
             </p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>            
         <?php

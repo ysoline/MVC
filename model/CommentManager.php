@@ -1,4 +1,5 @@
 <?php
+namespace Julie\Blog\Model;
 
 require_once('model/Manager.php');
 
@@ -14,7 +15,6 @@ class CommentManager extends Manager
     }
 
 
-
     public function postComment($postId, $author, $comment)
     {
         $db= $this->dbConnect();
@@ -24,11 +24,11 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-    public function editComment($newComment, $author, $commentId)
+    public function editComment($newComment, $commentId, $comment)
     {
         $db= $this->dbConnect();
-        $eComments=$db->prepare('UPDATE comments SET comment=? author=? commentId=?');
-        $affectedComment = $eComments-> execute(array($newComment, $author, $commentId));
+        $eComments=$db->prepare('UPDATE comments SET comment=? WHERE id=?');
+        $affectedComment = $eComments-> execute(array($newComment, $commentId, $comment));
 
         return $affectedComment;
     }

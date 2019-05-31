@@ -29,8 +29,8 @@ try{
                 }
                 elseif ($_GET['action'] == 'editComment'){
                         if(isset($_GET['id']) && $_GET['id'] > 0) {
-                                if(!empty($_POST['author']) && !empty($_POST['comment'])) {
-                                        editComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                                if(!empty($_POST['comment'])) {
+                                        editComment($_GET['id'], $_POST['comment']);
                                 }else{
                                         throw new Exception('Tous les champs ne sont pas remplis');
                                 }
