@@ -14,7 +14,6 @@ class CommentManager extends Manager
         return $comments;
     }
 
-
     public function postComment($postId, $author, $comment)
     {
         $db= $this->dbConnect();
@@ -24,13 +23,12 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-    public function editComment($newComment, $commentId, $comment)
+    public function commentView($commentId)
     {
-        $db= $this->dbConnect();
-        $eComments=$db->prepare('UPDATE comments SET comment=? WHERE id=?');
-        $affectedComment = $eComments-> execute(array($newComment, $commentId, $comment));
+        $db = $this->dbConnect();
+        $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ?');
+        $comment= $comments->execute(array($commentId));
 
-        return $affectedComment;
+        return $comment;
     }
-
 }

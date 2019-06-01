@@ -16,14 +16,14 @@
             </p>
         </div>
 
-        <h2>Commentaires</h2>
+        <h2>Commentaires</h2> 
 
         <?php
         while ($comment = $comments->fetch())
         {
         ?>
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> 
-            <a href="view/frontend/commentView.php?action=edit&amp;id=<?= $comment['id']?>">Modifier le commentaire </a>
+            <a href="index.php?action=comment&amp;id=<?= $comment['id'] ?>" >Modifier le commentaire </a>
             </p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>            
         <?php
