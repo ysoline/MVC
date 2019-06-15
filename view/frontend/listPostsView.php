@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 <h1 class='d-flex justify-content-center'>Mon super blog !</h1>
-<p>Derniers billets du blog :</p>
+<h5 class='ml-5'>Derniers billets du blog :</h5>
 
 
 <?php
@@ -18,7 +18,7 @@ while ($data = $posts->fetch())
         <p>
             <?= nl2br(htmlspecialchars($data['content'])) ?>
         </div> 
-        <button type="button" class="btn btn-outline-primary"><em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em></button>
+        <button type="button" class="btn btn-outline-primary ml-5"><em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em></button>
         </p>
     
 <?php
