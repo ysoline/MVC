@@ -33,7 +33,7 @@
         ?>
     </div>
 
-    <h5 class="d-flex justify-content-center mt-5">Ajouter un commentaire </h5>
+    <h5 class="d-flex justify-content-center mt-5">Ajouter un commentaire : </h5>
     <div class="col-md-6 offset-md-5 mt-5">
         <div class="card border-primary mb-3 col-md-auto" style="max-width: 20rem;">
 
