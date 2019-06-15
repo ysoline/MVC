@@ -14,17 +14,22 @@ function addComment($postID, $author, $comment)
     }
 }
 
-function comment()
+function updateComment($commentId)
 {
     $commentManager = new \Julie\Blog\Model\CommentManager();
+    $comment = $commentManager->getComment($_GET['id']);
 
-    $comment = $commentManager -> commentView($_GET['id']);
+    require('view\frontend\commentView.php');
+}
 
-    require('view/frontend/commentView.php');
-
-    //if ($comments === false){
-    //    throw new Exception('Impossible d\'afficher le commentaire !');
-   // }else{
-    //    header('Location: view/frontend/commentView.php?action=comment='.$_GET['id']);
-    //}
+function editComment($commentId, $author, $comment, $post_id)
+{
+    $commentManager = new \Julie\Blog\Model\CommentManager();
+    $affectedLines = $commentManager->editComment($author, $comment, $commentId);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de modifier le commentaire !');
+    }
+    else {
+        header('Location: index.php?action=post&id=' . $post_id);
+    }
 }
